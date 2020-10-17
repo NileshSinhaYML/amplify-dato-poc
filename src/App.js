@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import LayoutRoute from './layouts/LayoutRoute';
 import APP_ROUTES from './appRoutes';
+import './style/_main.scss';
 
 /**
  * @description
