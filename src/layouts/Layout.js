@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from '../components/header/Header';
+import SideNav from '../components/sideNav/SideNav';
 
 /**
  * @description
@@ -7,7 +9,13 @@ import PropTypes from 'prop-types';
  * @param {node} children the child components that are passed
  * @returns {node} the layout component
  */
-const Layout = ({ children }) => <main className="layout">{children}</main>;
+const Layout = ({ children }) => (
+  <main className="layout">
+    <Header />
+    <SideNav />
+    {children}
+  </main>
+);
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.elementType, PropTypes.object]),
