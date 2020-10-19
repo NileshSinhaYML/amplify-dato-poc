@@ -26,6 +26,7 @@ module.exports = {
     'linebreak-style': 0,
     'consistent-return': [0],
     'react/sort-comp': [0],
+    'react/jsx-props-no-spreading': [0],
     'react/jsx-filename-extension': [
       'error',
       {
