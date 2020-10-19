@@ -13,7 +13,7 @@ const Layout = ({ children }) => (
   <main className="layout">
     <Header />
     <SideNav />
-    {children}
+    <div className="layout-section">{children}</div>
   </main>
 );
 
