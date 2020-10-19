@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { isDataExists } from '../../utils/utils';
 import NAV_CONSTANTS from './sideNav.constants';
+import ROUTES_LIST from '../../appRoutes';
 import './sideNav.scss';
 
 /**
@@ -10,6 +11,7 @@ import './sideNav.scss';
  * @returns {node} the side nav panel
  */
 const SideNav = () => {
+  const history = useHistory();
   /**
    * @description
    * Function to render the nav list
@@ -25,7 +27,7 @@ const SideNav = () => {
     ));
   return (
     <nav className="side-nav-container">
-      <p className="app-title-section">
+      <p className="app-title-section" onClick={() => history.push(ROUTES_LIST.HOME)}>
         <span className="app-title">{NAV_CONSTANTS.APP_TITLE}</span>
       </p>
       <ul className="side-nav-list">

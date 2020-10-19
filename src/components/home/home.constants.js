@@ -4,5 +4,6 @@ module.exports = {
   BUTTON_VALUES: {
     ADD: 'Add Todo',
     LIST: 'List Todos',
+    TO_DO: 'Todos',
   },
 };

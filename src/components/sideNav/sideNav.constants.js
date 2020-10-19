@@ -8,13 +8,8 @@ module.exports = {
       activeClassName: 'nav-item-active',
     },
     {
-      to: APP_ROUTES.ADD_TO_DO,
-      name: 'Add Todo',
-      activeClassName: 'nav-item-active',
-    },
-    {
-      to: APP_ROUTES.LIST_TO_DO,
-      name: 'List Todos',
+      to: APP_ROUTES.TO_DO,
+      name: 'Todos',
       activeClassName: 'nav-item-active',
     },
   ],

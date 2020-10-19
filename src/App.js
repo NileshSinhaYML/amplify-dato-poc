@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-d
 import LayoutRoute from './layouts/LayoutRoute';
 import APP_ROUTES from './appRoutes';
 import Home from './components/home/Home';
+import Todo from './containers/todo/Todo';
 import './style/_main.scss';
 
 /**
@@ -17,8 +18,7 @@ const App = () => (
         <Redirect to={APP_ROUTES.HOME} />
       </Route>
       <LayoutRoute path={APP_ROUTES.HOME} component={Home} />
-      <LayoutRoute path={APP_ROUTES.ADD_TO_DO} component={() => <div />} />
-      <LayoutRoute path={APP_ROUTES.LIST_TO_DO} component={() => <div />} />
+      <LayoutRoute path={APP_ROUTES.TO_DO} component={Todo} />
     </Switch>
   </Router>
 );

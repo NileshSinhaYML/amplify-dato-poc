@@ -21,12 +21,8 @@ const Home = () => {
    */
   const getActionsConfigList = () => [
     {
-      value: HOME_CONSTANTS.BUTTON_VALUES.ADD,
-      onClick: () => history.push(ROUTE_CONSTANTS.ADD_TO_DO),
-    },
-    {
-      value: HOME_CONSTANTS.BUTTON_VALUES.LIST,
-      onClick: () => history.push(ROUTE_CONSTANTS.LIST_TO_DO),
+      value: HOME_CONSTANTS.BUTTON_VALUES.TO_DO,
+      onClick: () => history.push(ROUTE_CONSTANTS.TO_DO),
     },
   ];
   /**
