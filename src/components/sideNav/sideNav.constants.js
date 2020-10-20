@@ -12,6 +12,11 @@ module.exports = {
       name: 'Todos',
       activeClassName: 'nav-item-active',
     },
+    {
+      to: APP_ROUTES.DASHBOARD,
+      name: 'Dashboard',
+      activeClassName: 'nav-item-active',
+    },
   ],
   APP_TITLE: 'Sample App',
 };

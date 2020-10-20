@@ -3,17 +3,27 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import { GraphQLClient, ClientContext } from 'graphql-hooks';
 import rootReducer from './rootReducer';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
+const client = new GraphQLClient({
+  url: process.env.REACT_APP_DATO_CMS_URL,
+  headers: {
+    Authorization: `Bearer ${process.env.REACT_APP_DATO_CMS_API_TOKEN}`,
+  },
+});
+
 ReactDOM.render(
   <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ClientContext.Provider value={client}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ClientContext.Provider>
   </StrictMode>,
   document.getElementById('root')
 );
