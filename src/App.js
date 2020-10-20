@@ -4,6 +4,7 @@ import LayoutRoute from './layouts/LayoutRoute';
 import APP_ROUTES from './appRoutes';
 import Home from './components/home/Home';
 import Todo from './containers/todo/Todo';
+import Dashboard from './containers/Dashboard/Dashboard';
 import './style/_main.scss';
 
 /**
@@ -19,6 +20,7 @@ const App = () => (
       </Route>
       <LayoutRoute path={APP_ROUTES.HOME} component={Home} />
       <LayoutRoute path={APP_ROUTES.TO_DO} component={Todo} />
+      <LayoutRoute path={APP_ROUTES.DASHBOARD} component={Dashboard} />
     </Switch>
   </Router>
 );
