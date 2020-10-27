@@ -1,28 +1,52 @@
 @import '../../style/variables';
 
 .dashboard-container {
-  width: 80%;
+  width: 100%;
   margin: auto;
-
-  &-post {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
+  box-sizing: border-box;
+  .dashboard-list-card {
+    @include flex-row(center, flex-end);
+    width: 90%;
     margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    .description-section {
+      width: 75%;
+      box-sizing: border-box;
+      padding: 0 10px 0 0;
+    }
+    .image-section {
+      width: 25%;
+      box-sizing: border-box;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    .listing-title {
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: capitalize;
+      padding: 10px 0;
+      box-sizing: border-box;
+    }
+    .listing-description {
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: justify;
+    }
   }
+}
 
-  &-thumbnail {
-    grid-row: 1/2;
-    transform: scale(0.8);
-    transition: all 0.7s ease-out;
-    cursor: pointer;
-  }
-
-  &-thumbnail:hover {
-    transform: scale(1);
-  }
-
-  &-title {
-    margin-bottom: 10px;
+@media (max-width: 1024px) {
+  .dashboard-container {
+    .dashboard-list-card {
+      @include flex-row();
+      .description-section {
+        width: 60%;
+      }
+      .image-section {
+        width: 40%;
+      }
+    }
   }
 }

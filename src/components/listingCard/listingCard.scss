@@ -1,0 +1,8 @@
+@import '../../style/variables';
+
+.list-card-container {
+  width: 90%;
+  box-sizing: border-box;
+  border: 1px solid $box-shadow2;
+  border-radius: 10px;
+}
