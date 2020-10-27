@@ -1,7 +1,7 @@
 @import '../../style/variables';
 
 .header-container {
-  @include flex-row(flex-start, center);
+  @include flex-row(center, center);
   height: 75px;
   width: 80%;
   background: $primary-color;
@@ -12,10 +12,21 @@
   top: 0;
   left: 20%;
   box-sizing: border-box;
+  z-index: 1;
   h1 {
     font-weight: bold;
     font-size: 24px;
     padding: 0 16px;
     box-sizing: border-box;
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .header-container {
+    width: 100%;
+    left: 0;
+    h1 {
+      display: block;
+    }
   }
 }

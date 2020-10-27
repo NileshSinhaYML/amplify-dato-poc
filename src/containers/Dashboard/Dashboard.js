@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Image } from 'react-datocms';
 import useGetAllPosts from '../../queries/useGetAllPosts';
 import { isDataExists } from '../../utils/utils';
+import ListingCard from '../../components/listingCard/ListingCard';
+import DASHBOARD_CONSTANTS from './dashboard.constants';
 
 import './dashboard.scss';
 
@@ -18,20 +19,19 @@ const Dashboard = () => {
   /**
    * @description
    * Function to render the posts
+   * @param {array} postData the post listing
    * @returns {node} the node list
    */
   const renderPost = (postData) =>
-    postData.map((eachPost, index) => (
-      <div className="dashboard-container-post" key={index}>
-        <div className="dashboard-container-info">
-          <h2 className="dashboard-container-title">{eachPost.title}</h2>
-          <p className="dashboard-container-description">{eachPost.description}</p>
-        </div>
-        <Image
-          className="dashboard-container-thumbnail"
-          data={eachPost.thumbnail.responsiveImage}
-        />
-      </div>
+    postData.map(({ title, description, thumbnail, id }) => (
+      <ListingCard
+        key={id}
+        title={title}
+        description={description}
+        thumbnail={thumbnail}
+        id={id}
+        customClass={DASHBOARD_CONSTANTS.CLASS_NAMES.LIST_CARD}
+      />
     ));
 
   return <div className="dashboard-container">{posts && renderPost(posts)}</div>;
