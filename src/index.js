@@ -4,9 +4,13 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { GraphQLClient, ClientContext } from 'graphql-hooks';
+import Amplify from 'aws-amplify';
 import rootReducer from './rootReducer';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import awsExports from './aws-exports';
+
+Amplify.configure(awsExports);
 
 const store = createStore(rootReducer, composeWithDevTools());
 
