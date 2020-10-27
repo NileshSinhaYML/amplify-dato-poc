@@ -1,7 +1,7 @@
 @import '../../style/variables';
 
 .header-container {
-  @include flex-row(center, center);
+  @include flex-row(flex-end, center);
   height: 75px;
   width: 80%;
   background: $primary-color;
@@ -21,12 +21,19 @@
     display: none;
   }
 }
+
 @media (max-width: 1024px) {
   .header-container {
+    @include flex-row(center, center);
     width: 100%;
     left: 0;
     h1 {
       display: block;
+    }
+    .signout-button {
+      position: fixed;
+      right: 5px;
+      bottom: 5px;
     }
   }
 }

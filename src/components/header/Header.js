@@ -1,4 +1,5 @@
 import React from 'react';
+import { AmplifySignOut } from '@aws-amplify/ui-react';
 import './header.scss';
 import SIDE_NAV_CONSTANTS from '../sideNav/sideNav.constants';
 
@@ -10,6 +11,7 @@ import SIDE_NAV_CONSTANTS from '../sideNav/sideNav.constants';
 const Header = () => (
   <header className="header-container">
     <h1 className="app-title">{SIDE_NAV_CONSTANTS.APP_TITLE}</h1>
+    <AmplifySignOut className="signout-button" />
   </header>
 );
 
