@@ -1,4 +1,5 @@
 import React from 'react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import LayoutRoute from './layouts/LayoutRoute';
 import APP_ROUTES from './appRoutes';
@@ -25,4 +26,4 @@ const App = () => (
   </Router>
 );
 
-export default App;
+export default withAuthenticator(App);
