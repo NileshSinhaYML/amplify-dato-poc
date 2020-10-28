@@ -20,6 +20,11 @@
     box-sizing: border-box;
     display: none;
   }
+  .signout-button {
+    display: block;
+    position: absolute;
+    right: 10px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -29,11 +34,6 @@
     left: 0;
     h1 {
       display: block;
-    }
-    .signout-button {
-      position: fixed;
-      right: 5px;
-      bottom: 5px;
     }
   }
 }

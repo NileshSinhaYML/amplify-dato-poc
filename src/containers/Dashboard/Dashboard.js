@@ -1,20 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import useGetAllPosts from '../../queries/useGetAllPosts';
+import { useDispatch, useSelector } from 'react-redux';
+import { useManualQuery } from 'graphql-hooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLanguage } from '@fortawesome/free-solid-svg-icons';
+import getAllPostsQuery from '../../queries/useGetAllPosts';
 import { isDataExists } from '../../utils/utils';
+import { listAllPosts, resetDataLoadedState } from './dashboard.actions';
 import ListingCard from '../../components/listingCard/ListingCard';
 import DASHBOARD_CONSTANTS from './dashboard.constants';
+import loader from '../../assets/images/spinner.svg';
 
 import './dashboard.scss';
 
 const Dashboard = () => {
-  const postsList = useGetAllPosts();
-  const [posts, setPosts] = useState([]);
+  const [language, updateLanguage] = useState(DASHBOARD_CONSTANTS.LOCALES.ENGLISH);
+  const dispatch = useDispatch();
+  const [getPosts, { loading, data }] = useManualQuery(getAllPostsQuery(language));
+  const { posts, hasDataLoaded } = useSelector((state) => state.post);
+  useEffect(() => {
+    if (!loading && data) {
+      dispatch(listAllPosts(data.allPosts));
+    }
+  }, [dispatch, loading, data]);
 
   useEffect(() => {
-    if (postsList && isDataExists(postsList.allPosts)) {
-      setPosts(postsList.allPosts);
+    if (!hasDataLoaded) {
+      getPosts();
     }
-  }, [postsList]);
+  }, [getPosts, hasDataLoaded]);
+
+  /**
+   * @description
+   * Function to get the query locale language
+   * @returns {string} the query locale language
+   */
+  const getLanguage = () =>
+    language === DASHBOARD_CONSTANTS.LOCALES.ENGLISH
+      ? DASHBOARD_CONSTANTS.LOCALES.SPANISH
+      : DASHBOARD_CONSTANTS.LOCALES.ENGLISH;
+
+  /**
+   * @description
+   * Function to handle the translate icon click
+   */
+  const handleTranslateClick = () => {
+    dispatch(resetDataLoadedState());
+    updateLanguage(getLanguage());
+  };
 
   /**
    * @description
@@ -34,7 +66,20 @@ const Dashboard = () => {
       />
     ));
 
-  return <div className="dashboard-container">{posts && renderPost(posts)}</div>;
+  return (
+    <div className="dashboard-container">
+      {!hasDataLoaded && <img src={loader} alt="loader" className="loader" />}
+      {isDataExists(posts) && renderPost(posts)}
+      <div
+        className="font-awesome-dangle"
+        role="button"
+        onClick={handleTranslateClick}
+        title={DASHBOARD_CONSTANTS.TRANSLATE}
+      >
+        <FontAwesomeIcon icon={faLanguage} border size="2x" className="translate-icon" />
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;
