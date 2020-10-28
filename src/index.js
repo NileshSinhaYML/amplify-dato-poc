@@ -1,7 +1,8 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { GraphQLClient, ClientContext } from 'graphql-hooks';
 import Amplify from 'aws-amplify';
@@ -12,7 +13,7 @@ import awsExports from './aws-exports';
 
 Amplify.configure(awsExports);
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 const client = new GraphQLClient({
   url: process.env.REACT_APP_DATO_CMS_URL,

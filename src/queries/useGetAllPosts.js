@@ -1,16 +1,16 @@
-import { useQuery } from 'graphql-hooks';
-
 /**
  * @description
  * Function to return all the posts from the cms
+ * @param {string} locale the localisation language
+ * @returns {string} the query parameter for the api call
  */
-const useGetAllPosts = () => {
-  const POSTS_QUERY = `query MyQuery {
-    allPosts {
+const getAllPostsQuery = (locale = 'en') =>
+  `query  {
+    allPosts ( locale: ${locale} ){
       updatedAt
       title
       id
-      description
+      description  
       thumbnail {
         alt
         responsiveImage  {
@@ -29,8 +29,5 @@ const useGetAllPosts = () => {
       }
     }
   }`;
-  const { data } = useQuery(POSTS_QUERY);
-  return data;
-};
 
-export default useGetAllPosts;
+export default getAllPostsQuery;
