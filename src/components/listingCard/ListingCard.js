@@ -26,9 +26,7 @@ const ListingCard = ({ customClass, title, description, thumbnail: { responsiveI
         <p className="listing-title">{title}</p>
         <p className="listing-description">{description}</p>
       </div>
-      <div className="image-section">
-        <Image data={responsiveImage} />
-      </div>
+      <div className="image-section">{responsiveImage && <Image data={responsiveImage} />}</div>
     </div>
   );
 };
