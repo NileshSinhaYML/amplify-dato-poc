@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Header } from './Header';
-import './page.css';
+import Header from './Header';
+import './page.scss';
 
-export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
+const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <article>
     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />
 
@@ -24,8 +24,8 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
       </p>
       <ul>
         <li>
-          Use a higher-level connected component. Storybook helps you compose such data from the
-          "args" of child component stories
+          Use a higher-level connected component. Storybook helps you compose such data from the of
+          child component stories
         </li>
         <li>
           Assemble data in the page component from your services. You can mock these services out
@@ -59,6 +59,9 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
     </section>
   </article>
 );
+
+export default Page;
+
 Page.propTypes = {
   user: PropTypes.shape({}),
   onLogin: PropTypes.func.isRequired,
